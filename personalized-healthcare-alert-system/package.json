@@ -1,0 +1,28 @@
+{
+  "name": "personalized-healthcare-alert-system",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react-dom": "^19.1.0",
+    "react": "^19.1.0",
+    "@google/genai": "^1.2.0",
+    "express": "^5.1.0",
+    "cors": "^2.8.5",
+    "body-parser": "^2.2.0",
+    "dotenv": "^16.5.0",
+    "path": "^0.12.7",
+    "fs": "^0.0.1-security",
+    "mongodb": "^6.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0"
+  }
+}

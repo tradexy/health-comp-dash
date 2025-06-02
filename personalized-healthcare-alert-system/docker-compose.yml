@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: healthcompanion_mongo_container
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=healthcompanion
+
+  ml-service:
+    build:
+      context: ../healthcare-ml-service # Path to the healthcare-ml-service directory
+      dockerfile: docker/Dockerfile
+    container_name: health_ml_service_container
+    environment:
+      - MLFLOW_TRACKING_URI=http://host.docker.internal:5008 # Connect to MLflow on host
+      - MONGO_URI=mongodb://mongo:27017 # Connect to Mongo service
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo
+    volumes:
+      - ../healthcare-ml-service/artifacts:/mlflow_artifacts # Mount host artifacts
+
+volumes:
+  mongo_data:

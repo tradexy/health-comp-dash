@@ -1,0 +1,9 @@
+name: health_threshold_models
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      metric: {type: str, default: "GLUCOSE"}
+    command: "python train_model.py --metric {metric}"
